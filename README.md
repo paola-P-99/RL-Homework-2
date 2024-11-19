@@ -27,5 +27,5 @@ So to launch the robot with the position interface the command is the following
 
 To select a velocity interface the command is the following 
 
-`$ ros2 launch  iiwa_bringup iiwa.launch.py`
+`$ ros2 launch  iiwa_bringup iiwa.launch.py  command_interface:="velocity" robot_controller:="velocity_controller"`
 
