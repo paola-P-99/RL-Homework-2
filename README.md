@@ -4,6 +4,9 @@ The goal of this project is to dynamically control a 7 DoF robot manipulator arm
 # Installation 
 The first action is the setup of the workspace,after cloning the repository in the desired folder 
 1.Clone the repository 
+
 `  $ git clone ///repository`
 2.Build the packages
-``
+
+`$ colcon build --packages-select ros2_iiwa ros2_kdl_package`
+
