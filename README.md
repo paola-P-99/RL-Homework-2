@@ -13,7 +13,7 @@ The first action is the setup of the workspace,after cloning the repository in t
 
 3.Source the workspace 
 
-$  source install/setup.bash
+`$  source install/setup.bash`
 
 # Launching the robot 
 The robot can be controlled with 3 command interfaces
