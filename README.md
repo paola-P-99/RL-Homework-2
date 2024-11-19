@@ -4,4 +4,5 @@ The goal of this project is to dynamically control a 7 DoF robot manipulator arm
 # Installation 
 The first action is the setup of the workspace 
 1. Clone the repository
+   
 `  $ git clone ///repository`
