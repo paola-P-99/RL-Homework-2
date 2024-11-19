@@ -35,7 +35,7 @@ To select the effort interface the command is the following
 
 To spawn the robot also in Gazebo  to the launch command above there must be added the following instruction 
 
-`use_sim:=true`
+` $ use_sim:=true`
 
 # Running the controllers 
 The controllers activated must be the same as the interface selected to ensure the proper visualization of the control action 
