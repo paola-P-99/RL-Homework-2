@@ -5,7 +5,7 @@ The goal of this project is to dynamically control a 7 DoF robot manipulator arm
 The first action is the setup of the workspace,after cloning the repository in the desired folder 
 1.Clone the repository 
 
-`  $ git clone ///repository`
+`$ git clone  ... `
 
 2.Build the packages
 
@@ -25,7 +25,31 @@ So to launch the robot with the position interface the command is the following
 
 `$ ros2 launch  iiwa_bringup iiwa.launch.py `
 
-To select a velocity interface the command is the following 
+To select the  velocity interface the command is the following 
 
 `$ ros2 launch  iiwa_bringup iiwa.launch.py  command_interface:="velocity" robot_controller:="velocity_controller"`
+
+To select the effort interface the command is the following 
+
+`$ ros2 launch  iiwa_bringup iiwa.launch.py command_interface:="effort" robot_controller:=“effort_controller" `
+
+To spawn the robot also in Gazebo  to the launch command above there must be added the following instruction 
+
+`use_sim:=true`
+
+# Running the controllers 
+The controllers activated must be the same as the interface selected to ensure the proper visualization of the control action 
+To run the controllers in position the command line is the following
+
+` $ ros2 run ros2_kdl_package ros2_kdl_node`
+
+The command to control the robot in velocity is 
+
+`$ ros2 run ros2_kdl_package ros2_kdl_node --ros-args -p cmd_interface:=velocity`
+
+The command to run the effort controllers is 
+
+`$ ros2 run ros2_kdl_package ros2_kdl_node --ros-args -p cmd_interface:=effort`
+
+
 
