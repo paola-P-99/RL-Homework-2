@@ -51,8 +51,8 @@ The command to run the effort controllers is
 
 `$ ros2 run ros2_kdl_package ros2_kdl_node --ros-args -p cmd_interface:=effort`
 
-# choosing the control action 
+# Choosing the control action
 After runnig the node to start the controller you have to choose between the 4 given trajectory 
-' pressing one number from 1 to 4' 
+`press a number between 1 and 4 `
 After you have to select the control action pressing choosing between 2 option PD+ or Operational space control 
-' pressing 1 or 2 '
+`press 1 or 2`
