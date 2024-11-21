@@ -59,5 +59,5 @@ The controller provided are two one in the joint space implemented as a PD+ and 
 `press 1 or 2 then enter`
 
 # Note
-The simulation in the Gazebo environment start paused and you have to be fast in order to ensure the correct activation of the controllers. A good way to do this is to launch the node containig the controller and select the trajectory you desire then run the launch file and un-pause the simulation then select the desired control to activate the controller in the terminal where you are runnig them. 
+The simulation in the Gazebo environment start paused and you have to be fast to un-pause in order to ensure the correct activation of the controllers. A good way to do this is to launch the node containig the controller and select the trajectory you desire then run the launch file and un-pause the simulation then select the desired control to activate the controller in the terminal where you are runnig them. 
 
