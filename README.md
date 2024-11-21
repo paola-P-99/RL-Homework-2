@@ -1,17 +1,16 @@
 # RL-Homework-2
-# Project overview
-The goal of this project is to dynamically control a 7 DoF robot manipulator arm in the Gazebo environment to ensure it follows a desired trajectory both in the joint space and the operational space. The package contains the configurarion, launch and control file.  
-# Installation 
-The first action is the setup of the workspace,after cloning the repository in the desired folder 
-1.Clone the repository 
+#  Overview
+The goal of the homework  is to dynamically control a 7 DoF robot manipulator using Docker and ROS2 with RVITZ and Gazebo to ensure it follows a desired trajectory both in the joint space and the operational space. The repo contains the step to download the folders from github,launch the robot and run the controller. 
+# Set-up  
+Open the terminal,open the container and enter into the directory where you want to downlad the folder then clone the repository with:
 
 `$ git clone  ... `
 
-2.Build the packages
+To build the packages, enter into the ROS2 workspace and build them with:
 
-`$ colcon build --packages-select ros2_iiwa ros2_kdl_package`
+`$ colcon build`
 
-3.Source the workspace 
+After this source the workspace 
 
 `$  source install/setup.bash`
 
@@ -20,39 +19,45 @@ The robot can be controlled with 3 command interfaces
     • Position 
     • Velocity 
     • Effort 
-If not explicitly specified it will run with the position one 
-So to launch the robot with the position interface the command is the following 
+If you want to applay a position  controller  you must launch the file with the position  interface,which is the default one, to do this you have to run the following command:
 
 `$ ros2 launch  iiwa_bringup iiwa.launch.py `
 
-To select the  velocity interface the command is the following 
+If you want to applay a velocity controller you must launch the file with the velocity interface,to do this you have to run the following command:
 
 `$ ros2 launch  iiwa_bringup iiwa.launch.py  command_interface:="velocity" robot_controller:="velocity_controller"`
 
-To select the effort interface the command is the following 
+If you want to applay an effort controller you must launch the file with the effort interface,to do this you have to run the following command: 
 
 `$ ros2 launch  iiwa_bringup iiwa.launch.py command_interface:="effort" robot_controller:=“effort_controller" `
 
-To spawn the robot also in Gazebo  to the launch command above there must be added the following instruction 
+By default the launch file run the  RVITZ2 and ROS2 simulations to appreciate the kinematics of the robot, to be able to spawn the robot in the Gazebo environment and apreciate the dynamics of the model you have to modify the launch command adding   
 
 ` $ use_sim:=true`
 
+to ensure that the value of the Gazebo simulation is set to true. 
+
 # Running the controllers 
-The controllers activated must be the same as the interface selected to ensure the proper visualization of the control action 
-To run the controllers in position the command line is the following
+to run the node with the controller open another terminal connnect to the same docker and run the command provided below.
+To ensure the proper visualization of the control action the  controllers activated must be the same as the interface selected, otherwise you wont be able to see the robot moving
+If you have selected a position interface you have to run the following command:
 
 ` $ ros2 run ros2_kdl_package ros2_kdl_node`
 
-The command to control the robot in velocity is 
+If you have selected a velocity interface you have to run the following command:
 
 `$ ros2 run ros2_kdl_package ros2_kdl_node --ros-args -p cmd_interface:=velocity`
 
-The command to run the effort controllers is 
+If you have selected a effort interface you have to run the following command:
 
 `$ ros2 run ros2_kdl_package ros2_kdl_node --ros-args -p cmd_interface:=effort`
 
 # Choosing the control action
-After runnig the node to start the controller you have to choose between the 4 given trajectory 
-`press a number between 1 and 4 `
-After you have to select the control action pressing choosing between 2 option PD+ or Operational space control 
-`press 1 or 2`
+In the code is provided the possibility to choose between  circular or rectilinear trajectory provided withb both trapezioidal or polynomial velocity.To do this you have to   
+`press a number between 1 and 4 then enter  `
+The controller provided are two one in the joint space implemented as a PD+ and one in the operational space implemented as an Inverse Dynamics control to select between the 2 you hae to 
+`press 1 or 2 then enter`
+
+# Note
+The simulation in the Gazebo environment start paused and you have to be fast in order to ensure the correct activation of the controllers. A good way to do this is to launch the node containig the controller and select the trajectory you desire then run the launch file and un-pause the simulation then select the desired control to activate the controller in the terminal where you are runnig them. 
+
